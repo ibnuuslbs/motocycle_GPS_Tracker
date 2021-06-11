@@ -20,21 +20,34 @@ void motocycle_contact() {
   Serial.println();
   Serial.print("Message : ");
   content.toUpperCase();
-  if (content.substring(1) == "04 7E 74 9A EB 2E 80") {
-    Serial.println("Authorized access");
+  if (content.substring(1) == idimam) {
+    Serial.println("Access allowed");
     Serial.println();
     contact++;
   }
  
-  else {
+  else if ((content.substring(1) = !idimam) && (contact==0)) {
     Serial.println(" Access denied");
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print(" Access Denied! ");
+    lcd.setCursor(0, 1);
+    lcd.print("   Unknown ID   ");
+    delay(5000);
   }
 
   if (contact==1) {
+    lcd.clear();
     digitalWrite(motocycleContact, HIGH);
+    lcd.setCursor(0, 0);
+    lcd.print(" Access allowed");
+    lcd.setCursor(0, 1);
+    lcd.print("Tap to turn off");
   }
+  
   else {
     contact=0;
+    start_lcd();
     digitalWrite(motocycleContact, LOW);
   }
   Serial.println(contact);

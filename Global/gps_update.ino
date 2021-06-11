@@ -14,7 +14,7 @@ void gps_update() {
 
         Blynk.virtualWrite(V0, 1, latitude, longitude, "Lokasi Imam");
       }
-//     delay(1000);
+//     delay(5000);
      Serial.println();  
     }
   }
