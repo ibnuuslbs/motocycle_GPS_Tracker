@@ -16,8 +16,6 @@
 #define motocycleContact 2
 
 
-MFRC522 mfrc522(SS_PIN, RST_PIN);  
-
 float latitude , longitude;
 String  lat_str , lng_str;
 String idimam = "04 7E 74 9A EB 2E 80";
@@ -33,6 +31,7 @@ char auth[] = "PT2gEU1Bw3MP1dxyGl3Si0wK_25b7SvS";
 
 WidgetMap myMap(V0); 
 WiFiClient client;
+MFRC522 mfrc522(SS_PIN, RST_PIN);  
 TinyGPSPlus gps;
 HardwareSerial SerialGPS(1);
 LiquidCrystal_I2C lcd(0x27, lcdColumns, lcdRows);  
