@@ -23,6 +23,14 @@ void motocycle_contact() {
   if (content.substring(1) == idimam) {
     Serial.println("Access allowed");
     Serial.println();
+    digitalWrite(buzzer, HIGH);
+    delay(100);
+    digitalWrite(buzzer, LOW);
+    delay(100);
+    digitalWrite(buzzer, HIGH);
+    delay(100);    
+    digitalWrite(buzzer, LOW);
+    delay(100);    
     contact++;
   }
  
@@ -38,7 +46,7 @@ void motocycle_contact() {
 
   if (contact==1) {
     lcd.clear();
-    digitalWrite(motocycleContact, HIGH);
+    digitalWrite(motocycleContact, HIGH);    
     lcd.setCursor(0, 0);
     lcd.print(" Access allowed");
     lcd.setCursor(0, 1);

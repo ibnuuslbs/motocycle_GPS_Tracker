@@ -9,6 +9,7 @@
 #include <WiFiClient.h>
 
 #define sirine 25
+#define buzzer 26
 #define SS_PIN 21
 #define RST_PIN 22
 #define I2C_SDA 33
@@ -43,6 +44,7 @@ void setup() {
   lcd.backlight();
   pinMode(sirine, OUTPUT);
   pinMode(sirine, HIGH);
+  pinMode(buzzer, OUTPUT);
   delay(10);
   Serial.begin(9600);   // Initiate a serial communication
   Serial.println("Connecting to ");
@@ -54,8 +56,12 @@ void setup() {
   WiFi.begin(ssid, pass);
   
   while (WiFi.status() != WL_CONNECTED) {
+    digitalWrite(buzzer, HIGH);
     delay(500);
-    Serial.print(".");             
+    digitalWrite(buzzer, LOW);
+    delay(500);
+    Serial.print("."); 
+                
   }
   
   Serial.println("");
