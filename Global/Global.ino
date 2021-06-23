@@ -26,9 +26,9 @@ int lcdColumns = 16;
 int lcdRows = 2;
 
 
-const char *ssid =  "Redmi 8";    
-const char *pass =  "elektro16"; 
-char auth[] = "PT2gEU1Bw3MP1dxyGl3Si0wK_25b7SvS"; 
+const char *ssid =  "Redmi";    
+const char *pass =  "bentardah"; 
+char auth[] = "LCvzg2cSHrs944ll1Gy1mGXSBkvpVDtd"; 
 
 WidgetMap myMap(V0); 
 WiFiClient client;
