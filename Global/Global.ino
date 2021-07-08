@@ -112,6 +112,5 @@ void loop() {
     lcd.print("  Connected to  ");
     lcd.setCursor(0, 1);
     lcd.print(ssid);
-    motocycle_contact();
   }
 }
