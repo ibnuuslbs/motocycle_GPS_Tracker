@@ -14,7 +14,7 @@
 #define RST_PIN 22
 #define I2C_SDA 33
 #define I2C_SCL 32
-#define motocycleContact 2
+#define motocycleContact 5
 
 
 float latitude , longitude;
@@ -26,8 +26,8 @@ int lcdColumns = 16;
 int lcdRows = 2;
 
 
-const char *ssid =  "Redmi";    
-const char *pass =  "bentardah"; 
+const char *ssid =  "Redmi 8";    
+const char *pass =  "elektro16"; 
 char auth[] = "LCvzg2cSHrs944ll1Gy1mGXSBkvpVDtd"; 
 
 WidgetMap myMap(V0); 
@@ -85,8 +85,33 @@ void setup() {
 }
 
 void loop() {
-  gps_update();
-  motocycle_contact();
-  Blynk.run();
-  delay(1000);
+
+  if (WiFi.status() == WL_CONNECTED) {
+    gps_update();
+    motocycle_contact();
+    Blynk.run();
+    delay(1000);
+  }
+
+  if (WiFi.status() == WL_DISCONNECTED) {
+    WiFi.begin(ssid, pass); 
+    while (WiFi.status() != WL_CONNECTED) {
+      digitalWrite(buzzer, HIGH);
+      delay(500);
+      digitalWrite(buzzer, LOW);
+      delay(500);
+      Serial.print(".");
+      lcd.clear();
+      lcd.setCursor(0,0);
+      lcd.print("Connecting to...");
+      lcd.setCursor(0,1);
+      lcd.print(ssid);
+    }
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("  Connected to  ");
+    lcd.setCursor(0, 1);
+    lcd.print(ssid);
+    motocycle_contact();
+  }
 }
