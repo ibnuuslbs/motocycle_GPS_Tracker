@@ -45,6 +45,8 @@ void setup() {
   pinMode(sirine, OUTPUT);
   pinMode(sirine, HIGH);
   pinMode(buzzer, OUTPUT);
+  pinMode(motocycleContact, OUTPUT);
+  digitalWrite(motocycleContact, LOW);
   delay(10);
   Serial.begin(9600);   // Initiate a serial communication
   Serial.println("Connecting to ");
@@ -77,7 +79,8 @@ void setup() {
   Blynk.begin(auth, ssid, pass);
   Blynk.virtualWrite(V0, "clr");   
   SPI.begin();      // Initiate  SPI bus
-  pinMode(motocycleContact, OUTPUT);
+//  pinMode(motocycleContact, OUTPUT);
+//  digitalWrite(motocycleContact, LOW);
   mfrc522.PCD_Init();   // Initiate MFRC522
   Serial.println("Approximate your card to the reader...");
   Serial.println();
