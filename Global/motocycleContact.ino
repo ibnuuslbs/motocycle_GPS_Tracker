@@ -41,6 +41,9 @@ void motocycle_contact() {
     lcd.print(" Access Denied! ");
     lcd.setCursor(0, 1);
     lcd.print("   Unknown ID   ");
+    digitalWrite(buzzer, HIGH);
+    delay(1000);
+    digitalWrite(buzzer, LOW);
     delay(5000);
   }
 

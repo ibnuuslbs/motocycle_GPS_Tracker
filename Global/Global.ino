@@ -26,8 +26,8 @@ int lcdColumns = 16;
 int lcdRows = 2;
 
 
-const char *ssid =  "Redmi 8";    
-const char *pass =  "elektro16"; 
+const char *ssid =  "Andromax-M2S-830E";    
+const char *pass =  "07065166"; 
 char auth[] = "LCvzg2cSHrs944ll1Gy1mGXSBkvpVDtd"; 
 
 WidgetMap myMap(V0); 
@@ -73,6 +73,18 @@ void setup() {
   lcd.setCursor(0, 1);
   lcd.print(ssid);
   Serial.println("WiFi connected");
+  delay(100);
+  digitalWrite(buzzer, HIGH);
+  delay(1000);
+  digitalWrite(buzzer, LOW);
+  delay(100);
+  digitalWrite(buzzer,HIGH);
+  delay(100);
+  digitalWrite(buzzer, LOW);
+  delay(100);
+  digitalWrite(buzzer, HIGH);
+  delay(100);
+  digitalWrite(buzzer, LOW);
   
   SerialGPS.begin(9600, SERIAL_8N1, 16, 17);
   
@@ -90,13 +102,14 @@ void setup() {
 void loop() {
 
   if (WiFi.status() == WL_CONNECTED) {
+    Serial.println("Done!");
     gps_update();
     motocycle_contact();
     Blynk.run();
     delay(1000);
   }
 
-  if (WiFi.status() == WL_DISCONNECTED) {
+  if (WiFi.status() == WL_CONNECTION_LOST) {
     WiFi.begin(ssid, pass); 
     while (WiFi.status() != WL_CONNECTED) {
       digitalWrite(buzzer, HIGH);
@@ -115,5 +128,17 @@ void loop() {
     lcd.print("  Connected to  ");
     lcd.setCursor(0, 1);
     lcd.print(ssid);
+    delay(100);
+    digitalWrite(buzzer, HIGH);
+    delay(1000);
+    digitalWrite(buzzer, LOW);
+    delay(100);
+    digitalWrite(buzzer,HIGH);
+    delay(100);
+    digitalWrite(buzzer, LOW);
+    delay(100);
+    digitalWrite(buzzer, HIGH);
+    delay(100);
+    digitalWrite(buzzer, LOW);
   }
 }
