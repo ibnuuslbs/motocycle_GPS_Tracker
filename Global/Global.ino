@@ -19,7 +19,9 @@
 
 float latitude , longitude;
 String  lat_str , lng_str;
-String idimam = "04 7E 74 9A EB 2E 80";
+String ektp_1 = "04 7E 74 9A EB 2E 80";
+String ektp_2 = "uid-ktp2";
+String ektp_3 = "uid-ktp3";
 int contact = 0;
 int wifi_ctr = 0;
 int lcdColumns = 16;

@@ -5,7 +5,7 @@
  
 #define SS_PIN 21
 #define RST_PIN 22
-#define kontakMotor 2
+//#define kontakMotor 2
 MFRC522 mfrc522(SS_PIN, RST_PIN);   // Create MFRC522 instance.
 
 int contact = 0;
@@ -14,7 +14,7 @@ void setup()
 {
   Serial.begin(9600);   // Initiate a serial communication
   SPI.begin();      // Initiate  SPI bus
-  pinMode(kontakMotor, OUTPUT);
+//  pinMode(kontakMotor, OUTPUT);
   mfrc522.PCD_Init();   // Initiate MFRC522
   Serial.println("Approximate your card to the reader...");
   Serial.println();
@@ -48,26 +48,27 @@ void loop()
   content.toUpperCase();
   if (content.substring(1) == "04 7E 74 9A EB 2E 80") //change here the UID of the card/cards that you want to give access
   {
-    Serial.println("Authorized access");
+    Serial.println("Access allowed");
     Serial.println();
-    contact++;
+//    contact++;
 //    digitalWrite(kontakMotor, HIGH);
 //    delay(3000);
   }
  
  else   {
-    Serial.println(" Access denied");
+    Serial.println("Access denied");
+    Serial.println();
 //    digitalWrite(kontakMotor, LOW);
 //    delay(3000);
   }
 
-  if (contact==1) {
-    digitalWrite(kontakMotor, HIGH);
-  }
-  else {
-    contact=0;
-    digitalWrite(kontakMotor, LOW);
-  }
-  Serial.println(contact);
-  delay(3000);
+//  if (contact==1) {
+//    digitalWrite(kontakMotor, HIGH);
+//  }
+//  else {
+//    contact=0;
+//    digitalWrite(kontakMotor, LOW);
+//  }
+//  Serial.println();
+//  delay(3000);
 }   

@@ -12,7 +12,7 @@ void gps_update() {
         Serial.print("Longitude = ");
         Serial.println(lng_str);
 
-        Blynk.virtualWrite(V0, 1, latitude, longitude, "Lokasi Imam");
+        Blynk.virtualWrite(V0, 1, latitude, longitude, "Lokasi motor Imam");
       }
      Serial.println();  
     }

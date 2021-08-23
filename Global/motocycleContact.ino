@@ -20,7 +20,7 @@ void motocycle_contact() {
   Serial.println();
   Serial.print("Message : ");
   content.toUpperCase();
-  if (content.substring(1) == idimam) {
+  if ((content.substring(1) == ektp_1) || (content.substring(1) == ektp_2) || (content.substring(1) == ektp_3)) {
     Serial.println("Access allowed");
     Serial.println();
     digitalWrite(buzzer, HIGH);
@@ -34,7 +34,7 @@ void motocycle_contact() {
     contact++;
   }
  
-  else if ((content.substring(1) = !idimam) && (contact==0)) {
+  else if (((content.substring(1) = ektp_1) || (content.substring(1) = ektp_2) || (content.substring(1) = ektp_3)) && (contact==0)) {
     Serial.println(" Access denied");
     lcd.clear();
     lcd.setCursor(0, 0);
